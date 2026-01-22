@@ -1,0 +1,83 @@
+Question 1
+import java.util.*;
+class Set2First {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int arr[]=new int[10];
+        System.out.println("Enter 10 elements:");
+        for(int i=0;i<10;i++){
+            arr[i]=sc.nextInt();
+        }
+        segregation(arr);
+       
+       
+    }
+    static void segregation(int []arr) {
+
+     int left=0;
+     int right=arr.length-1;
+     int temp[]=new int[arr.length];
+     for(int i=0;i<arr.length;i++){
+
+        if(arr[i]%2==0) {
+            temp[left++]=arr[i];
+            
+        }
+        else{
+            temp[right--]=arr[i];
+        }
+
+     }
+
+     for(int i=0;i<arr.length;i++){
+            System.out.print(temp[i]+" ");
+        }
+       
+    }
+}
+
+
+Question 2:
+
+import java.util.*;
+class Set2Second {
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int arr[]=new int[5];
+        System.out.println("Enter 5 elements:");
+        for(int i=0;i<5;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println("Enter the number to search:");
+        int k=sc.nextInt();
+        search(arr, k );
+       
+    }
+    static void search(int []arr, int k) {
+        int left=0;
+        int right=arr.length-1;
+        Arrays.sort(arr);
+        boolean found = false;
+        while(left<=right){
+        
+            int mid=(left+right)/2;
+            if(arr[mid]==k) {
+                found=true;
+                break;
+            }
+            else if(k<arr[mid]) {
+                right=mid-1;
+            }
+            else {
+                left=mid+1;
+            }
+        }
+        if(found) {
+            System.out.println("Element found");
+        }
+        else {
+            System.out.println("Element not found");
+        }
+    } 
+}
